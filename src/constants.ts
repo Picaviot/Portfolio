@@ -17,6 +17,8 @@ export const PROJECTS: Project[] = [
     ],
     technologies: ['Python', 'CSV', 'GitLab', 'Markdown', 'Unit Testing'],
     images: [
+      { url: '/assets/sae/sae105/SAE.png', caption: 'Logique de traitement et manipulation de listes' },
+      { url: '/assets/sae/sae105/ex_fonction.png', caption: 'Exemple de fonction de traitement' }
     ]
   },
   {
@@ -35,6 +37,8 @@ export const PROJECTS: Project[] = [
     ],
     technologies: ['OpenStack', 'Linux', 'DNS', 'FTP', 'Grafana', 'SSH'],
     images: [
+      { url: '/assets/sae/sae201/VueInstances.png', caption: 'Visualisation des instances' },
+      { url: '/assets/sae/sae201/Grafana.png', caption: 'Monitoring Grafana' }
     ]
   },
   {
@@ -70,6 +74,8 @@ export const PROJECTS: Project[] = [
     ],
     technologies: ['WatchGuard', 'pfSense', 'Proxmox', 'VMware ESXi', 'Wazuh', 'PRTG', 'Veeam', 'Active Directory Tiering'],
     images: [
+      { url: '/assets/sae/sae5cy03/Supervision_SI.jpg', caption: 'Supervision du système d\'information' },
+      { url: '/assets/sae/sae5cy03/Infra_SAEcy03.jpg', caption: 'Infrastructure réseau et sécurité' }
     ]
   }
 ];
