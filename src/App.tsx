@@ -35,8 +35,6 @@ import {
 import { motion, AnimatePresence } from 'motion/react';
 import { PROJECTS, EXPERIENCES, DETAILED_SKILLS, SKILLS } from './constants';
 import { Project, Experience, Skill } from './types';
-import cvPdf from './assets/CV_Joel_PAVIOT.pdf';
-
 type Page = 'home' | 'skills' | 'experience' | 'projects' | 'cv';
 
 export default function App() {
@@ -752,7 +750,7 @@ export default function App() {
                   <h2 className="font-serif text-7xl md:text-9xl italic leading-[0.8]">Mon CV.</h2>
                 </div>
                 <a 
-                  href={cvPdf}
+                  href="/CV_Joel_PAVIOT.pdf"
                   download="CV_Joel_PAVIOT.pdf"
                   className="px-8 py-4 border border-zinc-200 text-[10px] uppercase tracking-[0.3em] font-bold flex items-center gap-4 group hover:bg-black hover:text-white transition-all duration-500 rounded-full"
                 >
