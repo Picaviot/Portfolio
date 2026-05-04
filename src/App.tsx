@@ -750,7 +750,11 @@ export default function App() {
                   <h2 className="font-serif text-7xl md:text-9xl italic leading-[0.8]">Mon CV.</h2>
                 </div>
                 <a 
+<<<<<<< HEAD
                   href="/CV_Joel_PAVIOT.pdf"
+=======
+                  href="/src/assets/CV_Joel_PAVIOT.pdf"
+>>>>>>> a863143dda7981606058d4554ec7af4f88102108
                   download="CV_Joel_PAVIOT.pdf"
                   className="px-8 py-4 border border-zinc-200 text-[10px] uppercase tracking-[0.3em] font-bold flex items-center gap-4 group hover:bg-black hover:text-white transition-all duration-500 rounded-full"
                 >
