@@ -189,7 +189,7 @@ export default function App() {
 
               {/* Stats Section */}
               <motion.div 
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 1, ease: [0.23, 1, 0.32, 1] }}
@@ -214,7 +214,7 @@ export default function App() {
                 </div>
               </motion.div>
               <motion.div 
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 1, ease: [0.23, 1, 0.32, 1] }}
@@ -227,7 +227,7 @@ export default function App() {
                 ].map((item) => (
                   <motion.div 
                     key={`service-${item.id}`}
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     className="group"
@@ -371,7 +371,7 @@ export default function App() {
               className="py-24"
             >
               <motion.div 
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 1, ease: [0.23, 1, 0.32, 1] }}
@@ -388,7 +388,7 @@ export default function App() {
                 {DETAILED_SKILLS.map((skill, index) => (
                   <motion.div
                     key={`skill-card-${skill.name}`}
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.05 }}
@@ -528,7 +528,7 @@ export default function App() {
               className="py-24"
             >
               <motion.div 
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 1, ease: [0.23, 1, 0.32, 1] }}
@@ -540,12 +540,11 @@ export default function App() {
 
               <div className="space-y-32">
                 {EXPERIENCES.map((exp, index) => (
-                  <motion.div 
-                    key={`exp-${exp.id}`}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.8, delay: index * 0.1 }}
+              <motion.div 
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, delay: index * 0.1 }}
                     className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start pb-24 border-b border-zinc-800"
                   >
                     <div className="lg:col-span-5 space-y-12">
@@ -659,7 +658,7 @@ export default function App() {
               className="py-24"
             >
               <motion.div 
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 1, ease: [0.23, 1, 0.32, 1] }}
@@ -673,7 +672,7 @@ export default function App() {
                 {PROJECTS.map((project, index) => (
                   <motion.div
                     key={project.id}
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
@@ -817,7 +816,7 @@ export default function App() {
           {activePage === 'cv' && (
             <motion.section
               key="cv"
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
