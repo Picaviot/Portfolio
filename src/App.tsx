@@ -30,7 +30,8 @@ import {
   Moon,
   Send,
   Loader2,
-  ArrowUpRight
+  ArrowUpRight,
+  Star
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { PROJECTS, EXPERIENCES, DETAILED_SKILLS, SKILLS } from './constants';
@@ -121,7 +122,7 @@ export default function App() {
       <div className="fixed inset-0 pointer-events-none opacity-[0.02] text-black -z-10" />
       
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b transition-all duration-500 bg-beige/80 border-zinc-100">
+      <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b transition-all duration-500 bg-beige/80 border-contrast/10">
         <div className="max-w-7xl mx-auto px-4 md:px-6 h-20 flex items-center justify-between">
           <div className="flex items-center gap-4 md:gap-8 w-full">
             <h2 className="font-serif italic text-2xl tracking-tighter shrink-0">JP.</h2>
@@ -163,23 +164,23 @@ export default function App() {
                       <span className="lg:ml-20">PAVIOT</span>
                     </h1>
                     <p className="text-xl md:text-2xl font-light mb-12 max-w-2xl leading-relaxed text-zinc-600">
-                      Étudiant en 3ème année de BUT R&T, alternant chez EDF. Spécialisé dans la conception d'infrastructures résilientes et la cybersécurité industrielle.
+                      Étudiant en 3ème année de BUT Réseaux Informatique et Télécommunications, alternant chez EDF. Admis en Master RSC à l'ENSIMAG, je me spécialise dans la conception d'infrastructures réseaux résilientes et la cybersécurité industrielle.
                     </p>
                     
                     <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-8">
                         <button 
-                          onClick={() => setActivePage('projects')} 
-                          className="text-xs uppercase tracking-[0.3em] font-medium flex items-center gap-4 group cursor-pointer text-black"
+                          onClick={() => setActivePage('skills')} 
+                          className="px-8 py-4 border border-contrast/10 text-xs uppercase tracking-[0.3em] font-bold flex items-center gap-4 group cursor-pointer text-white bg-contrast hover:bg-black transition-all duration-500 rounded-full shadow-sm hover:shadow-xl"
                         >
-                          Voir les collections
-                          <div className="w-12 h-px transition-all group-hover:w-20 bg-black" />
+                          Voir mes compétences
+                          <ArrowUpRight size={14} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                         </button>
                         <button 
                           onClick={() => setActivePage('cv')} 
-                          className="text-xs uppercase tracking-[0.3em] font-medium flex items-center gap-4 group cursor-pointer text-zinc-400 hover:text-black"
+                          className="px-8 py-4 border border-contrast/10 text-xs uppercase tracking-[0.3em] font-bold flex items-center gap-4 group cursor-pointer text-white bg-contrast hover:bg-black transition-all duration-500 rounded-full shadow-sm hover:shadow-xl"
                         >
-                          Consulter le CV
-                          <div className="w-8 h-px transition-all group-hover:w-16 bg-zinc-400 group-hover:bg-black" />
+                          Consulter mon CV
+                          <ArrowUpRight size={14} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                         </button>
                     </div>
                   </motion.div>
@@ -187,23 +188,38 @@ export default function App() {
               </div>
 
               {/* Stats Section */}
-              <div className="grid grid-cols-1 lg:grid-cols-4 gap-px border-y border-zinc-200 bg-zinc-200 mb-32 overflow-hidden">
+              <motion.div 
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 1, ease: [0.23, 1, 0.32, 1] }}
+                className="grid grid-cols-1 lg:grid-cols-4 gap-px border-y border-contrast/10 bg-contrast/10 mb-32 overflow-hidden"
+              >
                 {[
                   { label: "Années d'études", value: "3", prefix: "", suffix: "" },
                   { label: "années d'alternance", value: "2", prefix: "", suffix: "" },
-                  { label: "Projets IT", value: "15", prefix: "+", suffix: "" },
-                  { label: "Engagement", value: "100", prefix: "", suffix: "%" }
+                  { label: "Projets IT", value: "15", prefix: "+", suffix: "" }
                 ].map((stat) => (
                   <motion.div 
                     key={`stat-${stat.label}`} 
-                    className="py-16 px-12 group transition-all duration-500 bg-beige text-black"
+                    className="py-16 px-12 group transition-all duration-500 bg-beige text-contrast"
                   >
-                    <div className="font-serif text-6xl mb-4 italic opacity-50">{stat.prefix}{stat.value}{stat.suffix}</div>
-                    <div className="text-[10px] uppercase tracking-[0.2em] opacity-40 font-medium">{stat.label}</div>
+                    <div className="font-serif text-6xl mb-4 italic opacity-40">{stat.prefix}{stat.value}{stat.suffix}</div>
+                    <div className="text-[10px] uppercase tracking-[0.2em] opacity-60 font-bold">{stat.label}</div>
                   </motion.div>
                 ))}
-              </div>
-                   <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-32">
+                <div className="py-16 px-12 bg-contrast text-white flex flex-col justify-center">
+                  <div className="text-[10px] uppercase tracking-[0.3em] font-bold mb-4 opacity-50 text-beige">Disponibilité</div>
+                  <div className="text-xl font-light italic">Septembre 2026 pour alternance en Master</div>
+                </div>
+              </motion.div>
+              <motion.div 
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 1, ease: [0.23, 1, 0.32, 1] }}
+                className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-32"
+              >
                 {[
                   { title: "Cybersécurité", desc: "Expertise en durcissement système, audit de vulnérabilités et déploiement de solutions de sécurité périmétrique.", id: "01" },
                   { title: "Réseaux Critiques", desc: "Conception, configuration et maintenance de réseaux industriels complexes. Maîtrise Cisco, Alcatel et HP.", id: "02" },
@@ -216,7 +232,7 @@ export default function App() {
                     viewport={{ once: true }}
                     className="group"
                   >
-                    <div className="text-[10px] font-mono mb-4 opacity-30 tracking-widest">{item.id}. SERVICE</div>
+                    <div className="text-[10px] font-mono mb-4 opacity-30 tracking-widest">{item.id}. EXPERTISE</div>
                     <h3 className="font-serif text-3xl mb-6 italic">{item.title}</h3>
                     <p className="text-sm leading-relaxed font-light text-zinc-500">
                       {item.desc}
@@ -224,7 +240,7 @@ export default function App() {
                     <div className="mt-8 w-full h-px transition-all duration-500 group-hover:scale-x-110 bg-zinc-100" />
                   </motion.div>
                 ))}
-              </div>
+              </motion.div>
 
               {/* Contact Section */}
               <motion.div 
@@ -238,7 +254,7 @@ export default function App() {
                     <span className="text-[10px] uppercase tracking-[0.4em] text-zinc-500 mb-8 block">Contact</span>
                     <h2 className="font-serif text-6xl italic mb-8">Commençons une collaboration.</h2>
                     <p className="text-lg font-light leading-relaxed text-zinc-500">
-                      Disponible pour échanger sur vos projets ou opportunités de Master. Écrivez-moi directement ou passez par le formulaire.
+                      Disponible pour échanger au sujet d'une opportunité d'alternance ou d'un projet. Écrivez-moi directement ou passez par le formulaire.
                     </p>
                   </div>
 
@@ -354,24 +370,43 @@ export default function App() {
               exit={{ opacity: 0 }}
               className="py-24"
             >
-              <div className="mb-32">
+              <motion.div 
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 1, ease: [0.23, 1, 0.32, 1] }}
+                className="mb-32"
+              >
                 <span className="text-[10px] uppercase tracking-[0.4em] text-zinc-500 mb-8 block">04. EXPERTISE</span>
                 <h2 className="font-serif text-8xl md:text-[10rem] italic leading-[0.85] mb-12">Compétences.</h2>
                 <p className="text-xl font-light max-w-2xl leading-relaxed text-zinc-500">
                   Un socle technique architecturé autour de la résilience système et de la souveraineté numérique.
                 </p>
-              </div>
+              </motion.div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-zinc-800 border-y border-zinc-800 mb-32">
                 {DETAILED_SKILLS.map((skill, index) => (
                   <motion.div
                     key={`skill-card-${skill.name}`}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.05 }}
                     onClick={() => setSelectedSkill(skill)}
                     className="cursor-pointer p-16 transition-all duration-500 group bg-white hover:bg-beige"
                   >
                     <div className="flex justify-between items-start mb-12">
                       <div className="text-[10px] font-mono opacity-30 tracking-widest">{String(index + 1).padStart(2, '0')}</div>
-                      <Info size={14} className="opacity-20 group-hover:opacity-100 transition-opacity" />
+                      {skill.iconName === 'Terminal' && <Terminal size={24} className="opacity-40 group-hover:opacity-100 transition-opacity" />}
+                      {skill.iconName === 'Globe' && <Globe size={24} className="opacity-40 group-hover:opacity-100 transition-opacity" />}
+                      {skill.iconName === 'Building2' && <Building2 size={24} className="opacity-40 group-hover:opacity-100 transition-opacity" />}
+                      {skill.iconName === 'Shield' && <Shield size={24} className="opacity-40 group-hover:opacity-100 transition-opacity" />}
+                      {skill.iconName === 'Zap' && <Zap size={24} className="opacity-40 group-hover:opacity-100 transition-opacity" />}
+                      {skill.iconName === 'Network' && <Network size={24} className="opacity-40 group-hover:opacity-100 transition-opacity" />}
+                      {skill.iconName === 'Phone' && <Phone size={24} className="opacity-40 group-hover:opacity-100 transition-opacity" />}
+                      {skill.iconName === 'Code2' && <Code2 size={24} className="opacity-40 group-hover:opacity-100 transition-opacity" />}
+                      {skill.iconName === 'Briefcase' && <Briefcase size={24} className="opacity-40 group-hover:opacity-100 transition-opacity" />}
+                      {!skill.iconName && <Info size={14} className="opacity-20 group-hover:opacity-100 transition-opacity" />}
                     </div>
                     <span className="text-[10px] uppercase tracking-[0.2em] font-medium text-zinc-500 mb-4 block">
                       {skill.category}
@@ -492,14 +527,27 @@ export default function App() {
               exit={{ opacity: 0 }}
               className="py-24"
             >
-              <div className="mb-24">
+              <motion.div 
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 1, ease: [0.23, 1, 0.32, 1] }}
+                className="mb-24"
+              >
                 <span className="text-[10px] uppercase tracking-[0.4em] text-zinc-500 mb-8 block">03. EXPÉRIENCE</span>
                 <h2 className="font-serif text-8xl md:text-[10rem] italic leading-[0.85] mb-12">Expérience.</h2>
-              </div>
+              </motion.div>
 
               <div className="space-y-32">
                 {EXPERIENCES.map((exp, index) => (
-                  <div key={`exp-${exp.id}`} className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start pb-24 border-b border-zinc-800">
+                  <motion.div 
+                    key={`exp-${exp.id}`}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.8, delay: index * 0.1 }}
+                    className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start pb-24 border-b border-zinc-800"
+                  >
                     <div className="lg:col-span-5 space-y-12">
                       <div className="text-[10px] font-mono mb-8 opacity-30 tracking-widest italic leading-relaxed">
                         {exp.period}
@@ -596,7 +644,7 @@ export default function App() {
                         </div>
                       </div>
                     )}
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </motion.section>
@@ -610,15 +658,25 @@ export default function App() {
               exit={{ opacity: 0 }}
               className="py-24"
             >
-              <div className="mb-24">
+              <motion.div 
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 1, ease: [0.23, 1, 0.32, 1] }}
+                className="mb-24"
+              >
                 <span className="text-[10px] uppercase tracking-[0.4em] text-zinc-500 mb-8 block">05. PROJETS</span>
                 <h2 className="font-serif text-8xl md:text-[10rem] italic leading-[0.85] mb-12">Projets.</h2>
-              </div>
+              </motion.div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-1 bg-zinc-800 border-y border-zinc-800 mb-32">
                 {PROJECTS.map((project, index) => (
                   <motion.div
                     key={project.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
                     onClick={() => setSelectedProject(project)}
                     className="group cursor-pointer p-16 transition-all duration-700 bg-white hover:bg-beige"
                   >
@@ -628,7 +686,18 @@ export default function App() {
                     </div>
                     
                     <div className="space-y-8">
-                      <span className="text-[10px] uppercase tracking-[0.3em] font-medium text-zinc-500">{project.category} / {project.year}</span>
+                      <div className="flex justify-between items-center">
+                        <span className="text-[9px] uppercase tracking-[0.4em] font-bold text-white bg-contrast px-3 py-1 rounded-sm">{project.category}</span>
+                        <div className="flex gap-0.5 pt-1">
+                          {[...Array(3)].map((_, i) => (
+                            <Star 
+                              key={`star-grid-${project.id}-${i}`} 
+                              size={10} 
+                              className={i < project.difficulty ? "fill-black text-black" : "text-zinc-200"} 
+                            />
+                          ))}
+                        </div>
+                      </div>
                       <h3 className="font-serif text-4xl leading-tight italic">{project.title}</h3>
                       <p className="text-sm font-light opacity-50 max-w-sm line-clamp-2 leading-relaxed">{project.description}</p>
                     </div>
@@ -665,10 +734,21 @@ export default function App() {
                       className="fixed inset-4 md:inset-x-24 md:inset-y-12 z-[70] shadow-2xl flex flex-col bg-beige rounded-sm overflow-hidden"
                     >
                       <div className="flex justify-between items-start p-8 md:p-12 border-b border-zinc-100">
-                        <div className="space-y-2">
-                          <span className="text-[9px] uppercase tracking-[0.4em] text-zinc-400 block">
-                            {selectedProject.category} / {selectedProject.year}
-                          </span>
+                        <div className="space-y-4">
+                          <div className="flex items-center gap-6">
+                            <span className="text-[9px] uppercase tracking-[0.4em] text-zinc-400 block pt-1">
+                              {selectedProject.category} / {selectedProject.year}
+                            </span>
+                            <div className="flex gap-1">
+                              {[...Array(3)].map((_, i) => (
+                                <Star 
+                                  key={`star-modal-${selectedProject.id}-${i}`} 
+                                  size={12} 
+                                  className={i < selectedProject.difficulty ? "fill-black text-black" : "text-zinc-200"} 
+                                />
+                              ))}
+                            </div>
+                          </div>
                           <h3 className="font-serif text-3xl md:text-5xl italic leading-none">{selectedProject.title}</h3>
                         </div>
                         <button 
@@ -863,7 +943,7 @@ export default function App() {
                                   </h5>
                                 </div>
                                 <div className="md:text-right shrink-0 py-2">
-                                  <span className="px-5 py-3 border border-zinc-100 text-[10px] font-mono tracking-widest text-zinc-400 uppercase bg-beige/50 rounded-full">
+                                  <span className="px-5 py-3 border border-contrast/10 text-[10px] font-mono tracking-widest text-contrast/60 uppercase bg-contrast/5 rounded-full">
                                     {exp.period}
                                   </span>
                                 </div>
@@ -913,7 +993,7 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <footer className="py-40 px-6 border-t border-zinc-100 bg-beige/10">
+      <footer className="py-40 px-6 border-t border-contrast/10 bg-contrast text-white">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-start gap-24 mb-40">
             <div className="max-w-md">
@@ -944,6 +1024,7 @@ export default function App() {
                 <h5 className="text-[10px] uppercase tracking-widest font-bold">Contact</h5>
                 <p className="text-sm font-light opacity-50 uppercase tracking-[0.2em] leading-loose">
                   paviotjoel@orange.fr<br/>
+                  07 72 77 09 04<br/>
                   Grenoble, FR
                 </p>
               </div>

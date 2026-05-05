@@ -6,6 +6,7 @@ export interface Project {
   description: string;
   details: string[];
   technologies: string[];
+  difficulty: number;
   images?: {
     url: string;
     caption: string;

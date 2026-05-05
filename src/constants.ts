@@ -7,6 +7,7 @@ export const PROJECTS: Project[] = [
     category: 'Programmation',
     year: 'BUT1 (2023-2024)',
     description: 'Développement d\'un programme Python pour l\'analyse de données CSV et la génération de frises chronologiques d\'emplois du temps.',
+    difficulty: 1,
     details: [
       'Récupération de données au format CSV et traitement pour créer un tableau et une frise chronologique récapitulative des cours.',
       'Prise en compte de la classe de l\'étudiant et des modules spécifiques au programme sur les deux semestres (BUT1, BUT2 ou BUT3).',
@@ -27,6 +28,7 @@ export const PROJECTS: Project[] = [
     category: 'Réseau',
     year: 'BUT1 (2023-2024)',
     description: 'Installation et configuration d\'une infrastructure réseau multi-machines via la plateforme Cloud OpenStack.',
+    difficulty: 2,
     details: [
       'Mise en place d\'instances Linux et Windows au sein d\'un réseau virtuel segmenté.',
       'Installation et configuration de services réseaux critiques : DNS (Bind9), FTP et pare-feu.',
@@ -47,6 +49,7 @@ export const PROJECTS: Project[] = [
     category: 'Réseau',
     year: 'BUT3 (2025-2026)',
     description: 'Mise en œuvre de solutions de monitoring (Zabbix, PRTG, Grafana) pour garantir la disponibilité et la performance des infrastructures IT.',
+    difficulty: 2,
     details: [
       'Zabbix : Déploiement d\'une solution Open Source robuste, configuration d\'agents, de templates et de triggers complexes, utilisation de la découverte automatique (LLD).',
       'PRTG Network Monitor : Supervision d\'un parc hétérogène via capteurs SNMP/NetFlow/sFlow et configuration de notifications automatiques.',
@@ -63,6 +66,7 @@ export const PROJECTS: Project[] = [
     category: 'Cybersécurité',
     year: 'BUT3 (2025-2026)',
     description: 'Conception d\'une infrastructure PME résiliente avec une approche "Security by Design" et respect des recommandations de l\'ANSSI.',
+    difficulty: 3,
     details: [
       'Architecture multi-firewall : WatchGuard (physique) en front et pfSense (virtualisé) pour le filtrage interne et le routage inter-VLAN.',
       'Virtualisation hybride : Utilisation de Proxmox pour le SI interne et VMware ESXi pour l\'isolation physique de la DMZ.',

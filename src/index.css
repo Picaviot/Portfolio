@@ -5,6 +5,7 @@
   --font-serif: "Cormorant Garamond", serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --color-beige: #f5f2ed;
+  --color-contrast: #1a1c1e;
 }
 
 @layer base {
