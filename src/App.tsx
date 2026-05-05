@@ -187,7 +187,7 @@ export default function App() {
               </div>
 
               {/* Stats Section */}
-              <div className="grid grid-cols-1 lg:grid-cols-4 gap-px border-y border-zinc-800 bg-zinc-800 mb-32 overflow-hidden">
+              <div className="grid grid-cols-1 lg:grid-cols-4 gap-px border-y border-zinc-200 bg-zinc-200 mb-32 overflow-hidden">
                 {[
                   { label: "Années d'études", value: "3", prefix: "", suffix: "" },
                   { label: "années d'alternance", value: "2", prefix: "", suffix: "" },
@@ -196,7 +196,7 @@ export default function App() {
                 ].map((stat) => (
                   <motion.div 
                     key={`stat-${stat.label}`} 
-                    className="py-16 px-12 group transition-all duration-500 bg-white text-black"
+                    className="py-16 px-12 group transition-all duration-500 bg-beige text-black"
                   >
                     <div className="font-serif text-6xl mb-4 italic opacity-50">{stat.prefix}{stat.value}{stat.suffix}</div>
                     <div className="text-[10px] uppercase tracking-[0.2em] opacity-40 font-medium">{stat.label}</div>
@@ -264,7 +264,7 @@ export default function App() {
                 </div>
 
                 {/* Contact Form */}
-                <div className="p-12 md:p-20 border transition-all duration-700 bg-zinc-50/30 border-zinc-100">
+                <div className="p-12 md:p-20 border transition-all duration-700 bg-beige/50 border-zinc-100">
                   {formStatus === 'success' ? (
                     <motion.div 
                       initial={{ opacity: 0, y: 20 }}
@@ -367,7 +367,7 @@ export default function App() {
                   <motion.div
                     key={`skill-card-${skill.name}`}
                     onClick={() => setSelectedSkill(skill)}
-                    className="cursor-pointer p-16 transition-all duration-500 group bg-white hover:bg-zinc-50"
+                    className="cursor-pointer p-16 transition-all duration-500 group bg-white hover:bg-beige"
                   >
                     <div className="flex justify-between items-start mb-12">
                       <div className="text-[10px] font-mono opacity-30 tracking-widest">{String(index + 1).padStart(2, '0')}</div>
@@ -553,9 +553,9 @@ export default function App() {
                       </div>
                     </div>
 
-                    {exp.featuredProject && (
-                      <div className="col-span-full pt-12 mt-12 border-t border-zinc-100">
-                        <div className="bg-zinc-50/50 border border-zinc-100 p-8 md:p-16 relative overflow-hidden group rounded-sm transition-all duration-500 hover:bg-white hover:shadow-xl">
+                      {exp.featuredProject && (
+                        <div className="col-span-full pt-12 mt-12 border-t border-zinc-100">
+                          <div className="bg-beige/40 border border-beige/60 p-8 md:p-16 relative overflow-hidden group rounded-sm transition-all duration-500 hover:bg-beige/60 hover:shadow-xl">
                           <div className="absolute top-0 right-0 p-8 opacity-5">
                             <Terminal size={160} />
                           </div>
@@ -620,7 +620,7 @@ export default function App() {
                   <motion.div
                     key={project.id}
                     onClick={() => setSelectedProject(project)}
-                    className="group cursor-pointer p-16 transition-all duration-700 bg-white hover:bg-zinc-50"
+                    className="group cursor-pointer p-16 transition-all duration-700 bg-white hover:bg-beige"
                   >
                     <div className="flex justify-between items-start mb-24">
                       <span className="text-[10px] opacity-20 font-mono italic tracking-widest">PROJECT — 0{index + 1}</span>
@@ -662,7 +662,7 @@ export default function App() {
                       animate={{ opacity: 1, scale: 1, y: 0 }}
                       exit={{ opacity: 0, scale: 0.98, y: 30 }}
                       transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
-                      className="fixed inset-4 md:inset-x-24 md:inset-y-12 z-[70] shadow-2xl flex flex-col bg-white rounded-sm overflow-hidden"
+                      className="fixed inset-4 md:inset-x-24 md:inset-y-12 z-[70] shadow-2xl flex flex-col bg-beige rounded-sm overflow-hidden"
                     >
                       <div className="flex justify-between items-start p-8 md:p-12 border-b border-zinc-100">
                         <div className="space-y-2">
@@ -760,9 +760,9 @@ export default function App() {
               </div>
 
               {/* Main CV Container */}
-              <div className="bg-white border border-zinc-100 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.05)] overflow-hidden">
-                {/* CV Header: Name & Contact */}
-                <div className="p-8 md:p-12 lg:p-16 border-b border-zinc-100 flex flex-col md:flex-row justify-between items-start md:items-end gap-12 bg-zinc-50/20">
+                <div className="bg-white border border-zinc-100 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.05)] overflow-hidden">
+                  {/* CV Header: Name & Contact */}
+                  <div className="p-8 md:p-12 lg:p-16 border-b border-zinc-100 flex flex-col md:flex-row justify-between items-start md:items-end gap-12 bg-beige/30">
                   <div className="space-y-4">
                     <h3 className="font-serif text-5xl md:text-7xl lg:text-8xl italic tracking-tighter leading-none mb-4">Joël Paviot</h3>
                     <div className="inline-block px-4 py-2 bg-black text-white text-[10px] uppercase tracking-[0.4em] font-bold">Réseaux & Cybersécurité</div>
@@ -787,7 +787,7 @@ export default function App() {
                 <div className="grid grid-cols-1 lg:grid-cols-12">
                   
                   {/* Left Column (Info Sidebar) */}
-                  <div className="lg:col-span-4 border-b lg:border-b-0 lg:border-r border-zinc-100 bg-zinc-50/10">
+                  <div className="lg:col-span-4 border-b lg:border-b-0 lg:border-r border-zinc-100 bg-beige/20">
                     
                     <div className="p-8 md:p-12 lg:p-16 space-y-20">
                       <section>
@@ -863,7 +863,7 @@ export default function App() {
                                   </h5>
                                 </div>
                                 <div className="md:text-right shrink-0 py-2">
-                                  <span className="px-5 py-3 border border-zinc-100 text-[10px] font-mono tracking-widest text-zinc-400 uppercase bg-zinc-50/50 rounded-full">
+                                  <span className="px-5 py-3 border border-zinc-100 text-[10px] font-mono tracking-widest text-zinc-400 uppercase bg-beige/50 rounded-full">
                                     {exp.period}
                                   </span>
                                 </div>
@@ -913,7 +913,7 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <footer className="py-40 px-6 border-t border-zinc-100">
+      <footer className="py-40 px-6 border-t border-zinc-100 bg-beige/10">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-start gap-24 mb-40">
             <div className="max-w-md">
