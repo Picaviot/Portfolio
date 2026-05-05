@@ -110,7 +110,7 @@ export default function App() {
   return (
     <div className="min-h-screen transition-colors duration-500 font-sans selection:bg-blue-500/30 relative overflow-hidden text-zinc-900">
       {/* Background with Space/Stars elements */}
-      <div className="fixed inset-0 pointer-events-none transition-all duration-1000 -z-20 bg-white">
+      <div className="fixed inset-0 pointer-events-none transition-all duration-1000 -z-20 bg-beige">
         <img 
           src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=2000&auto=format&fit=crop" 
           alt="Space background" 
@@ -121,7 +121,7 @@ export default function App() {
       <div className="fixed inset-0 pointer-events-none opacity-[0.02] text-black -z-10" />
       
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b transition-all duration-500 bg-white/80 border-zinc-100">
+      <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b transition-all duration-500 bg-beige/80 border-zinc-100">
         <div className="max-w-7xl mx-auto px-4 md:px-6 h-20 flex items-center justify-between">
           <div className="flex items-center gap-4 md:gap-8 w-full">
             <h2 className="font-serif italic text-2xl tracking-tighter shrink-0">JP.</h2>
@@ -510,7 +510,7 @@ export default function App() {
                       
                       <div className="relative group overflow-hidden border border-zinc-100 rounded-sm shadow-sm transition-all duration-700 hover:shadow-2xl">
                         <img 
-                          src="assets/CNPE_BUGEY.jpg" 
+                          src="./assets/CNPE_BUGEY.jpg" 
                           alt="CNPE du Bugey" 
                           className="w-full h-80 object-cover transition-all duration-1000 group-hover:scale-110"
                           referrerPolicy="no-referrer"
@@ -750,7 +750,7 @@ export default function App() {
                   <h2 className="font-serif text-7xl md:text-9xl italic leading-[0.8]">Mon CV.</h2>
                 </div>
                 <a 
-                  href="CV_Joel_PAVIOT.pdf"
+                  href="./CV_Joel_PAVIOT.pdf"
                   download="CV_Joel_PAVIOT.pdf"
                   className="px-8 py-4 border border-zinc-200 text-[10px] uppercase tracking-[0.3em] font-bold flex items-center gap-4 group hover:bg-black hover:text-white transition-all duration-500 rounded-full"
                 >
