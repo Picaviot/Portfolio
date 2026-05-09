@@ -46,14 +46,31 @@ export default function App() {
   const [contactForm, setContactForm] = useState({ name: '', email: '', subject: '', message: '' });
   const [formStatus, setFormStatus] = useState<'idle' | 'sending' | 'success'>('idle');
 
-  const handleContactSubmit = (e: React.FormEvent) => {
+  const handleContactSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormStatus('sending');
-    setTimeout(() => {
-      setFormStatus('success');
-      setContactForm({ name: '', email: '', subject: '', message: '' });
-      setTimeout(() => setFormStatus('idle'), 5000);
-    }, 1500);
+    
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(contactForm),
+      });
+      
+      if (response.ok) {
+        setFormStatus('success');
+        setContactForm({ name: '', email: '', subject: '', message: '' });
+        setTimeout(() => setFormStatus('idle'), 5000);
+      } else {
+        throw new Error('Erreur lors de l\'envoi');
+      }
+    } catch (error) {
+      console.error(error);
+      setFormStatus('idle');
+      alert("Une erreur est survenue lors de l'envoi du message.");
+    }
   };
 
   // Scroll to top on page change
@@ -378,7 +395,7 @@ export default function App() {
                 className="mb-32"
               >
                 <span className="text-[10px] uppercase tracking-[0.4em] text-zinc-500 mb-8 block">04. EXPERTISE</span>
-                <h2 className="font-serif text-8xl md:text-[10rem] italic leading-[0.85] mb-12">Compétences.</h2>
+                <h2 className="font-serif text-6xl md:text-8xl lg:text-[10rem] italic leading-[0.85] mb-12 break-words">Compétences.</h2>
                 <p className="text-xl font-light max-w-2xl leading-relaxed text-zinc-500">
                   Un socle technique architecturé autour de la résilience système et de la souveraineté numérique.
                 </p>
@@ -388,12 +405,12 @@ export default function App() {
                 {DETAILED_SKILLS.map((skill, index) => (
                   <motion.div
                     key={`skill-card-${skill.name}`}
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0, filter: "blur(4px)" }}
+                    whileInView={{ opacity: 1, filter: "blur(0px)" }}
                     viewport={{ once: true }}
-                    transition={{ delay: index * 0.05 }}
+                    transition={{ duration: 0.8, delay: index * 0.05 }}
                     onClick={() => setSelectedSkill(skill)}
-                    className="cursor-pointer p-16 transition-all duration-500 group bg-white hover:bg-beige"
+                    className="cursor-pointer p-8 md:p-16 transition-all duration-700 group bg-white hover:bg-beige border-b border-r border-zinc-100"
                   >
                     <div className="flex justify-between items-start mb-12">
                       <div className="text-[10px] font-mono opacity-30 tracking-widest">{String(index + 1).padStart(2, '0')}</div>
@@ -535,13 +552,14 @@ export default function App() {
                 className="mb-24"
               >
                 <span className="text-[10px] uppercase tracking-[0.4em] text-zinc-500 mb-8 block">03. EXPÉRIENCE</span>
-                <h2 className="font-serif text-8xl md:text-[10rem] italic leading-[0.85] mb-12">Expérience.</h2>
+                <h2 className="font-serif text-6xl md:text-8xl lg:text-[10rem] italic leading-[0.85] mb-12 break-words">Expérience.</h2>
               </motion.div>
 
               <div className="space-y-32">
                 {EXPERIENCES.map((exp, index) => (
-              <motion.div 
-                initial={{ opacity: 0, y: 15 }}
+                  <motion.div 
+                    key={`exp-${exp.id}`}
+                    initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
@@ -665,19 +683,19 @@ export default function App() {
                 className="mb-24"
               >
                 <span className="text-[10px] uppercase tracking-[0.4em] text-zinc-500 mb-8 block">05. PROJETS</span>
-                <h2 className="font-serif text-8xl md:text-[10rem] italic leading-[0.85] mb-12">Projets.</h2>
+                <h2 className="font-serif text-6xl md:text-8xl lg:text-[10rem] italic leading-[0.85] mb-12 break-words">Projets.</h2>
               </motion.div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-1 bg-zinc-800 border-y border-zinc-800 mb-32">
                 {PROJECTS.map((project, index) => (
                   <motion.div
                     key={project.id}
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0, scale: 0.98 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
+                    transition={{ duration: 0.8, delay: index * 0.1, ease: [0.23, 1, 0.32, 1] }}
                     onClick={() => setSelectedProject(project)}
-                    className="group cursor-pointer p-16 transition-all duration-700 bg-white hover:bg-beige"
+                    className="group cursor-pointer p-8 md:p-16 transition-all duration-700 bg-white hover:bg-beige border border-zinc-100"
                   >
                     <div className="flex justify-between items-start mb-24">
                       <span className="text-[10px] opacity-20 font-mono italic tracking-widest">PROJECT — 0{index + 1}</span>
@@ -883,7 +901,7 @@ export default function App() {
                           <div className="group">
                             <div className="text-[9px] font-mono text-zinc-300 mb-2 uppercase tracking-widest italic font-bold">2020 — 2023</div>
                             <h5 className="font-serif text-xl italic mb-2 leading-tight">Baccalauréat Scientifique</h5>
-                            <p className="text-[10px] uppercase tracking-widest text-zinc-400 font-medium">Option Maths-NSI (Mention TB)</p>
+                            <p className="text-[10px] uppercase tracking-widest text-zinc-400 font-medium">Option Maths-NSI (Mention Bien)</p>
                           </div>
                         </div>
                       </section>
