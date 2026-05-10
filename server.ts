@@ -2,9 +2,12 @@ import express from "express";
 import { createServer as createViteServer } from "vite";
 import path from "path";
 import { fileURLToPath } from "url";
+import "dotenv/config";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+import { Resend } from "resend";
 
 async function startServer() {
   const app = express();
@@ -13,18 +16,48 @@ async function startServer() {
   app.use(express.json());
 
   // API Routes
-  app.post("/api/contact", (req, res) => {
-    const { name, email, message } = req.body;
+  app.post("/api/contact", async (req, res) => {
+    const { name, email, subject, message } = req.body;
     
     console.log("Nouveau message de contact :");
     console.log(`Nom: ${name}`);
     console.log(`Email: ${email}`);
     console.log(`Message: ${message}`);
+
+    const resendApiKey = process.env.RESEND_API_KEY;
     
-    // Ici, vous pourriez intégrer un service comme SendGrid ou Resend
-    // pour envoyer un véritable email.
-    
-    res.json({ success: true, message: "Message reçu !" });
+    if (!resendApiKey) {
+      console.warn("RESEND_API_KEY manquante. Simulation de l'envoi.");
+      return res.json({ success: true, message: "Message reçu (mode simulation) !" });
+    }
+
+    const resend = new Resend(resendApiKey);
+
+    try {
+      const { data, error } = await resend.emails.send({
+        from: 'Portfolio Contact <onboarding@resend.dev>',
+        to: ['joel2second2@gmail.com'],
+        subject: `Contact Portfolio: ${subject || 'Nouveau message'}`,
+        replyTo: email,
+        html: `
+          <h3>Nouveau message de contact (Direct Server)</h3>
+          <p><strong>Nom:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Message:</strong></p>
+          <p style="white-space: pre-wrap;">${message}</p>
+        `,
+      });
+
+      if (error) {
+        console.error("Resend Error:", error);
+        return res.status(400).json({ success: false, error });
+      }
+
+      res.json({ success: true, data });
+    } catch (err) {
+      console.error("Server Error:", err);
+      res.status(500).json({ success: false, error: "Erreur serveur" });
+    }
   });
 
   // Vite middleware for development

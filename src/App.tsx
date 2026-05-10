@@ -64,12 +64,13 @@ export default function App() {
         setContactForm({ name: '', email: '', subject: '', message: '' });
         setTimeout(() => setFormStatus('idle'), 5000);
       } else {
-        throw new Error('Erreur lors de l\'envoi');
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error?.message || errorData.message || 'Erreur lors de l\'envoi');
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
       setFormStatus('idle');
-      alert("Une erreur est survenue lors de l'envoi du message.");
+      alert(error.message || "Une erreur est survenue lors de l'envoi du message.");
     }
   };
 
